@@ -80,4 +80,15 @@ public class Rq {
     public String getPath() {
         return req.getRequestURI();
     }
+
+    public String getActionPath() {
+        String[] bits = req.getRequestURI().split("/");
+
+        return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+    }
+
+    public long getPostId() {
+        String[] bits = req.getRequestURI().split("/");
+        return Integer.valueOf(bits[bits.length - 1]);
+    }
 }
