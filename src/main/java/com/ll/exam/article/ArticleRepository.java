@@ -2,7 +2,7 @@ package com.ll.exam.article;
 
 import com.ll.exam.article.dto.ArticleDto;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleRepository {
@@ -10,9 +10,10 @@ public class ArticleRepository {
     private static long lastId;
 
     static {
-        datum = new LinkedList<>();
+        datum = new ArrayList<>();
         lastId = 0;
     }
+
     public long write(String title, String body) {
         long id = ++lastId;
         ArticleDto newArticleDto = new ArticleDto(id, title, body);
@@ -20,5 +21,9 @@ public class ArticleRepository {
         datum.add(newArticleDto);
 
         return id;
+    }
+
+    public List<ArticleDto> findAll() {
+        return datum;
     }
 }
