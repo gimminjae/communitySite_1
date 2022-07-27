@@ -50,4 +50,13 @@ public class ArticleController {
         rq.setAttr("article", articleDto);
         rq.view("usr/article/detail");
     }
+
+    public void showdelete(Rq rq) {
+        long id = rq.getPostId();
+
+        articleService.delete(id);
+
+        rq.appendBody("%d번 게시물이 삭제 되었습니다.".formatted(id));
+
+    }
 }

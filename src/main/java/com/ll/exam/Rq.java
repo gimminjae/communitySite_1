@@ -62,7 +62,6 @@ public class Rq {
 
 
     public void view(String path) {
-        // gugudan2.jsp 에게 나머지 작업을 토스
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
         try {
             requestDispatcher.forward(req, resp);

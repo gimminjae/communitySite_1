@@ -37,4 +37,14 @@ public class ArticleRepository {
     }
 
 
+    public long delete(long id) {
+        for(int i = 0; i < datum.size(); i++) {
+            if(datum.get(i).getId() == id) {
+                ArticleDto ad = datum.get(i);
+                datum.remove(ad);
+                return id;
+            }
+        }
+        return 0;
+    }
 }

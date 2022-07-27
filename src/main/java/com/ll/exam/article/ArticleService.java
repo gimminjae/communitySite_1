@@ -22,6 +22,8 @@ public class ArticleService {
     public ArticleDto findById(long id) {
         return articleRepository.findById(id);
     }
-
+    public long delete(long id) {
+        return articleRepository.delete(id);
+    }
 
 }

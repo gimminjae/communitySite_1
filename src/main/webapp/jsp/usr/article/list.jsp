@@ -14,7 +14,11 @@
         <a href="/usr/article/detail/free/<%=article.getId()%>">
             <%=article.getId()%>. <%=article.getTitle()%>
         </a>
+        <button type="button" onclick="location.href='/usr/article/delete/free/<%=article.getId()%>';"> 삭제 </button>
     </li>
-
     <% } %>
 </ul>
+
+<style>
+
+</style>
