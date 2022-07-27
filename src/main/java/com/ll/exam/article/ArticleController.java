@@ -60,4 +60,24 @@ public class ArticleController {
         rq.appendBody("<div><a href=\"/usr/article/list/free\">리스트로 이동</a></div>".formatted(id));
 
     }
+
+    public void showModify(Rq rq) {
+        long id = rq.getPostId();
+
+        ArticleDto articleDto = articleService.findById(id);
+
+        rq.setAttr("article", articleDto);
+        rq.view("usr/article/modify");
+    }
+
+    public void doModify(Rq rq) {
+        long id = rq.getPostId();
+
+        String title = rq.getParam("title", "");
+        String body = rq.getParam("body", "");
+
+        rq.appendBody("<div>id : %d</div>".formatted(id));
+        rq.appendBody("<div>title : %s</div>".formatted(title));
+        rq.appendBody("<div>body : %s</div>".formatted(body));
+    }
 }
