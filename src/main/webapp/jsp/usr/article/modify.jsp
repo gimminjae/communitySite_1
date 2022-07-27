@@ -5,6 +5,8 @@
     ArticleDto article = (ArticleDto)request.getAttribute("article");
 %>
 
+<%@ include file="../common/head.jspf"%>
+
 <h1>게시물 수정</h1>
 
 <script>
@@ -27,8 +29,8 @@
 
 <form method="POST" onsubmit="ArticleSave__submitForm(this); return false;">
     <div>
-        <span>번호</span>
         <div>
+            <span>번호</span>
             <%=article.getId()%>
         </div>
     </div>
@@ -48,9 +50,10 @@
     </div>
 
     <div>
-        <span>수정</span>
         <div>
             <input type="submit" value="수정" />
         </div>
     </div>
 </form>
+
+<%@ include file="../common/foot.jspf"%>
