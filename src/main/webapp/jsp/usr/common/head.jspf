@@ -44,7 +44,7 @@
             </li>
             <li>
                 <a class="hover:underline hover:text-[red]"
-                   href="/usr/article/write/free">자유게시물 리스트</a>
+                   href="/usr/article/list/free">자유게시물 리스트</a>
             </li>
         </ul>
     </div>

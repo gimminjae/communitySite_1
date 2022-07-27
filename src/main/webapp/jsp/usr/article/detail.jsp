@@ -7,8 +7,9 @@
 
 <%@ include file="../common/head.jspf"%>
 
-<h1>게시물 상세페이지</h1>
-
+<section>
+    <div class="container px-3 mx-auto">
+        <h1 class="font-bold text-lg">게시물 상세페이지</h1>
 <div>
     <% if ( article != null ) { %>
     <div>
@@ -22,5 +23,7 @@
     </div>
     <% } %>
 </div>
+    </div>
+</section>
 
 <%@ include file="../common/foot.jspf"%>
