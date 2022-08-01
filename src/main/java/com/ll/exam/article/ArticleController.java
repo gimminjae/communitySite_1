@@ -38,13 +38,13 @@ public class ArticleController {
         long id = rq.getLongPathValueByIndex(1, 0);
 
         if (id == 0) {
-            rq.println("번호를 입력해주세요.");
+            rq.replace("/usr/article/list/free", "번호를 입력해주세요.");
             return;
         }
         ArticleDto articleDto = articleService.findById(id);
 
         if (articleDto == null) {
-            rq.println("해당 글이 존재하지 않습니다.");
+            rq.replace("/usr/article/list/free", "해당 글은 존재하지 않습니다.");
             return;
         }
 
@@ -54,6 +54,7 @@ public class ArticleController {
 
     public void showdelete(Rq rq) {
         long id = rq.getPostId();
+
 
         articleService.delete(id);
 
@@ -65,14 +66,33 @@ public class ArticleController {
     public void showModify(Rq rq) {
         long id = rq.getPostId();
 
+        if (id == 0) {
+            rq.replace("/usr/article/list/free", "번호를 입력해주세요.");
+            return;
+        }
         ArticleDto articleDto = articleService.findById(id);
 
+        if (articleDto == null) {
+            rq.replace("/usr/article/list/free", "해당 글은 존재하지 않습니다.");
+            return;
+        }
         rq.setAttr("article", articleDto);
         rq.view("usr/article/modify");
     }
 
     public void doModify(Rq rq) {
         long id = rq.getPostId();
+
+        if (id == 0) {
+            rq.replace("/usr/article/list/free", "번호를 입력해주세요.");
+            return;
+        }
+        ArticleDto articleDto = articleService.findById(id);
+
+        if (articleDto == null) {
+            rq.replace("/usr/article/list/free", "해당 글은 존재하지 않습니다.");
+            return;
+        }
 
         String title = rq.getParam("title", "");
         String body = rq.getParam("body", "");
