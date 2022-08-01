@@ -30,8 +30,8 @@ public class ArticleController {
 
         long id = articleService.write(title, body);
 
-        rq.println("%d번 게시물이 생성 되었습니다.".formatted(id));
-        showList(rq);
+        rq.replace("/usr/article/list/free".formatted(id), "%d번 게시물이 생성되었습니다.".formatted(id));
+
     }
 
     public void showDetail(Rq rq) {
@@ -58,9 +58,8 @@ public class ArticleController {
         articleService.delete(id);
 
         rq.println("<div class=\"alert('정말로 삭제하시겠습니까?')\"></div>".formatted(id));
-//        rq.println("<div class=\"alert('게시물이 삭제되었습니다.')\"></div>".formatted(id));
-        showList(rq);
 
+        rq.replace("/usr/article/list/free".formatted(id), "게시물이 삭제되었습니다.");
     }
 
     public void showModify(Rq rq) {
@@ -80,7 +79,6 @@ public class ArticleController {
 
         articleService.modify(id, title, body);
 
-//        rq.println("<div>alert('%d번 게시물이 수정되었습니다.');</div>".formatted(id));
-        showDetail(rq);
+        rq.replace("/usr/article/detail/free/%d".formatted(id), "%d번 게시물이 수정되었습니다.".formatted(id));
     }
 }

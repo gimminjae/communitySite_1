@@ -53,7 +53,7 @@
 
     <div>
         <div>
-            <input onclick="alert('게시물이 수정되었습니다.')" class="hover:underline hover:text-[red] cunsor-pointer"
+            <input class="hover:underline hover:text-[red] cunsor-pointer"
             type="submit" value="수정" />
         </div>
     </div>
