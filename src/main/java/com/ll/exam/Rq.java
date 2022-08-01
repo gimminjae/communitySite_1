@@ -48,7 +48,7 @@ public class Rq {
         }
     }
 
-    public void appendBody(String str) {
+    public void println(String str) {
         try {
             resp.getWriter().append(str);
         } catch (IOException e) {
