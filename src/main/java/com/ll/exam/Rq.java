@@ -72,7 +72,11 @@ public class Rq {
         }
     }
 
-    public String getMethod() {
+    public String getRouteMethod() {
+        String method = getParam("_method", "");
+        if(method.length() > 0) {
+            return method.toUpperCase();
+        }
         return req.getMethod();
     }
 
@@ -128,5 +132,20 @@ public class Rq {
                 location.replace("%s");
                 </script>
                 """.formatted(uri));
+    }
+
+    public void historyBack(String msg) {
+        if (msg != null && msg.trim().length() > 0) {
+            println("""
+                    <script>
+                    alert("%s");
+                    </script>
+                    """.formatted(msg));
+        }
+        println("""
+                <script>
+                history.back();
+                </script>
+                """);
     }
 }

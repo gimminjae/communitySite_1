@@ -28,6 +28,16 @@ public class ArticleController {
         String title = rq.getParam("title", "");
         String body = rq.getParam("body", "");
 
+        if (title.length() == 0) {
+            rq.historyBack("제목을 입력해주세요.");
+            return;
+        }
+
+        if (body.length() == 0) {
+            rq.historyBack("내용을 입력해주세요.");
+            return;
+        }
+
         long id = articleService.write(title, body);
 
         rq.replace("/usr/article/list/free".formatted(id), "%d번 게시물이 생성되었습니다.".formatted(id));
@@ -52,7 +62,7 @@ public class ArticleController {
         rq.view("usr/article/detail");
     }
 
-    public void showdelete(Rq rq) {
+    public void doDelete(Rq rq) {
         long id = rq.getPostId();
 
 
